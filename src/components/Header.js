@@ -1,8 +1,9 @@
 import { useContext, useEffect } from "react";
 import { MoviesContext } from "../contexts/movies-context";
+import { Link } from "react-router-dom";
 
-const Header = ({ fullName }) => {
-  const { page, movies } = useContext(MoviesContext);
+const Header = () => {
+  const { page, movies, fullName } = useContext(MoviesContext);
 
   useEffect(() => {
     console.log("movies değişti", movies)
@@ -22,7 +23,7 @@ const Header = ({ fullName }) => {
             <div className="col-sm-4 offset-md-1 py-4">
               <h4 className="text-white">Contact</h4>
               <ul className="list-unstyled">
-                <li><a href="#" className="text-white">Follow on Twitter</a></li>
+                <li><Link to={"about-us"}>About Us</Link></li>
                 <li><a href="#" className="text-white">Like on Facebook</a></li>
                 <li><a href="#" className="text-white">Email me</a></li>
               </ul>
@@ -32,7 +33,7 @@ const Header = ({ fullName }) => {
       </div>
       <div className="navbar navbar-dark bg-dark shadow-sm">
         <div className="container">
-          <a href="#" className="navbar-brand d-flex align-items-center">
+          <Link to={"/"} className="navbar-brand d-flex align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
                  strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" aria-hidden="true" className="me-2"
                  viewBox="0 0 24 24">
@@ -40,7 +41,7 @@ const Header = ({ fullName }) => {
               <circle cx="12" cy="13" r="4"></circle>
             </svg>
             <strong>{fullName} | Current page: {page}</strong>
-          </a>
+          </Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
                   aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

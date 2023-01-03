@@ -3,8 +3,10 @@ import axios from "axios";
 
 const initStates = {
   page: 1,
+  fullName: 1,
   movies: [],
-  setPage: () => {}
+  setPage: () => {},
+  setFullName: () => {}
 };
 
 export const MoviesContext = createContext(initStates);
@@ -12,6 +14,7 @@ export const MoviesContext = createContext(initStates);
 const MoviesProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [fullName, setFullName] = useState("Murat Özenç");
 
   useEffect(() => {
     (async function () {
@@ -23,8 +26,10 @@ const MoviesProvider = ({ children }) => {
   return (
     <MoviesContext.Provider value={{
       movies,
+      fullName,
       page,
-      setPage
+      setPage,
+      setFullName
     }}>
       {children}
     </MoviesContext.Provider>

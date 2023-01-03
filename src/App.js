@@ -1,15 +1,20 @@
-import Header from "./components/Header";
-import Main from "./components/Main";
-import { useState } from "react";
 import MoviesProvider from "./contexts/movies-context";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import IndexPage from "./pages/IndexPage";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
-  const [fullName, setFullName] = useState("Murat Özenç");
-
   return (
     <MoviesProvider>
-      <Header fullName={fullName} />
-      <Main changeName={setFullName} />
+      <BrowserRouter>
+        <Routes>
+          <Route path={"/"} element={<Layout />}>
+            <Route index element={<IndexPage />} />
+            <Route path={"about-us"} element={<AboutPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </MoviesProvider>
   );
 }
